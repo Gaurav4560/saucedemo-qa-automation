@@ -13,11 +13,17 @@ public class BaseTest {
 
     @BeforeMethod
     public void setUp() {
-        WebDriverManager.chromedriver().setup();
-        ChromeOptions options = new ChromeOptions();
-        options.addArguments("--start-maximized");
-        driver = new ChromeDriver(options);
-        driver.get("https://www.saucedemo.com/");
+      WebDriverManager.chromedriver().setup();
+
+ChromeOptions options = new ChromeOptions();
+options.addArguments("--headless=new");
+options.addArguments("--no-sandbox");
+options.addArguments("--disable-dev-shm-usage");
+options.addArguments("--disable-gpu");
+options.addArguments("--window-size=1920,1080");
+
+driver = new ChromeDriver(options);
+driver.get("https://www.saucedemo.com/");
     }
 
     @AfterMethod
