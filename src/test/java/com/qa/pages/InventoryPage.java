@@ -1,0 +1,47 @@
+
+package com.qa.pages;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import java.util.List;
+
+public class InventoryPage {
+
+    private WebDriver driver;
+
+    private By productNames = By.className("inventory_item_name");
+    private By productPrices = By.className("inventory_item_price");
+    private By sortDropdown = By.className("product_sort_container");
+    private By cartIcon = By.className("shopping_cart_link");
+
+    public InventoryPage(WebDriver driver) {
+        this.driver = driver;
+    }
+
+    public List<WebElement> getProductNames() {
+        return driver.findElements(productNames);
+    }
+
+    public List<WebElement> getProductPrices() {
+        return driver.findElements(productPrices);
+    }
+
+    public void sortProducts(String option) {
+        driver.findElement(sortDropdown).sendKeys(option);
+    }
+
+    public void addProductToCart(String product) {
+        String buttonId = "add-to-cart-" +
+                product.toLowerCase().replace(" ", "-");
+        driver.findElement(By.id(buttonId)).click();
+    }
+
+    public void openCart() {
+        driver.findElement(cartIcon).click();
+    }
+
+    public boolean isInventoryPageDisplayed() {
+        return driver.findElement(By.className("inventory_list")).isDisplayed();
+    }
+}
