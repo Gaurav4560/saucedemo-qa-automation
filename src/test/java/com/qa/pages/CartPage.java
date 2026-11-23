@@ -33,8 +33,9 @@ public class CartPage {
         driver.findElement(By.id(buttonId)).click();
     }
 
-    public void clickCheckout() {
-        driver.findElement(checkoutButton).click();
+   public void clickCheckout() {
+    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+    wait.until(ExpectedConditions.elementToBeClickable(checkoutButton)).click();
     }
 
     public void continueShopping() {
