@@ -52,7 +52,7 @@ public class InventoryPage {
             "Remove"
     ));
 }
-    }
+    
 
     public void openCart() {
         driver.findElement(cartIcon).click();
