@@ -42,13 +42,14 @@ public class InventoryPage {
             product.toLowerCase().replace(" ", "-");
 
     By addButton = By.id(buttonId);
-    By removeButton = By.id(buttonId.replace("add-to-cart-", "remove-"));
+    By cartBadge = By.className("shopping_cart_badge");
 
     WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 
     wait.until(ExpectedConditions.elementToBeClickable(addButton)).click();
 
-    wait.until(ExpectedConditions.visibilityOfElementLocated(removeButton));
+    wait.until(ExpectedConditions.textToBePresentInElementLocated(cartBadge, "1"));
+ }
 
 }
     
