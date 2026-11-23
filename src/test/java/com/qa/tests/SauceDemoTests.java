@@ -97,4 +97,27 @@ public void completeCheckoutInformationTest() {
         Assert.assertEquals(cartPage.getCartItems().size(), 0,
                 "Cart should be empty after removing the product");
     }
+        @Test
+    public void sortProductsByPriceLowToHighTest() {
+        LoginPage loginPage = new LoginPage(driver);
+        loginPage.login("standard_user", "secret_sauce");
+
+        InventoryPage inventoryPage = new InventoryPage(driver);
+        inventoryPage.sortProducts("lohi");
+
+        List<WebElement> prices = inventoryPage.getProductPrices();
+
+        double firstPrice = Double.parseDouble(
+                prices.get(0).getText().replace("$", "")
+        );
+
+        double lastPrice = Double.parseDouble(
+                prices.get(prices.size() - 1).getText().replace("$", "")
+        );
+
+        Assert.assertTrue(
+                firstPrice <= lastPrice,
+                "Products should be sorted from low to high price"
+        );
+    }
 }
