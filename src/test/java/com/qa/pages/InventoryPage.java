@@ -52,9 +52,11 @@ public class InventoryPage {
 
 }
     
+public void openCart() {
+    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+    wait.until(ExpectedConditions.elementToBeClickable(cartIcon)).click();
 
-    public void openCart() {
-        driver.findElement(cartIcon).click();
+    
     }
 
     public boolean isInventoryPageDisplayed() {
