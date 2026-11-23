@@ -38,20 +38,21 @@ public class InventoryPage {
     }
 
   public void addProductToCart(String product) {
-    String buttonId = "add-to-cart-" +
-            product.toLowerCase().replace(" ", "-");
+   WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 
-    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+WebElement productCard = wait.until(
+    ExpectedConditions.visibilityOfElementLocated(
+        By.xpath("//div[@class='inventory_item' and .//div[@class='inventory_item_name' and text()='" + product + "']]")
+    )
+);
 
-    WebElement button = wait.until(
-            ExpectedConditions.elementToBeClickable(By.id(buttonId))
-    );
+WebElement button = productCard.findElement(By.tagName("button"));
+wait.until(ExpectedConditions.elementToBeClickable(button)).click();
 
-    button.click();
-
-   wait.until(ExpectedConditions.presenceOfElementLocated(
-    By.id(buttonId.replace("add-to-cart-", "remove-"))
-    ));
+wait.until(ExpectedConditions.textToBe(
+    By.id(button.getAttribute("id").replace("add-to-cart-", "remove-")),
+    "Remove"
+));
 }
     
 
