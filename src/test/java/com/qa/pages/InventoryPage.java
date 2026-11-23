@@ -31,8 +31,9 @@ public class InventoryPage {
         return driver.findElements(productPrices);
     }
 
-    public void sortProducts(String option) {
-        driver.findElement(sortDropdown).sendKeys(option);
+  public void sortProducts(String option) {
+    Select dropdown = new Select(driver.findElement(sortDropdown));
+    dropdown.selectByValue(option);
     }
 
   public void addProductToCart(String product) {
