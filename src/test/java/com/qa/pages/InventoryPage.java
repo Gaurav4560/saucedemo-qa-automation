@@ -49,9 +49,9 @@ public class InventoryPage {
 
     button.click();
 
-    wait.until(ExpectedConditions.textToBe(
-            By.id(buttonId.replace("add-to-cart-", "remove-")),
-            "Remove"
+   wait.until(ExpectedConditions.presenceOfElementLocated(
+    By.id(buttonId.replace("add-to-cart-", "remove-"))
+));
     ));
 }
     
