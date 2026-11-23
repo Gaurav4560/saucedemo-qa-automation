@@ -48,6 +48,7 @@ public class InventoryPage {
     );
 
     button.click();
+     System.out.println("Button after click: " + button.getText());
 
     wait.until(ExpectedConditions.textToBe(
             By.id(buttonId.replace("add-to-cart-", "remove-")),
