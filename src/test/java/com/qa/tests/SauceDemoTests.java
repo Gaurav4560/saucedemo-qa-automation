@@ -105,7 +105,7 @@ public void completeCheckoutInformationTest() {
         loginPage.login("standard_user", "secret_sauce");
 
         InventoryPage inventoryPage = new InventoryPage(driver);
-        inventoryPage.sortProducts("lohi");
+        inventoryPage.sortProducts("Price (low to high)");
 
         List<WebElement> prices = inventoryPage.getProductPrices();
 
