@@ -35,12 +35,23 @@ public class InventoryPage {
         driver.findElement(sortDropdown).sendKeys(option);
     }
 
-    public void addProductToCart(String product) {
-        String buttonId = "add-to-cart-" +
-                product.toLowerCase().replace(" ", "-");
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-WebElement button = wait.until(ExpectedConditions.elementToBeClickable(By.id(buttonId)));
-button.click();
+  public void addProductToCart(String product) {
+    String buttonId = "add-to-cart-" +
+            product.toLowerCase().replace(" ", "-");
+
+    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+
+    WebElement button = wait.until(
+            ExpectedConditions.elementToBeClickable(By.id(buttonId))
+    );
+
+    button.click();
+
+    wait.until(ExpectedConditions.textToBe(
+            By.id(buttonId.replace("add-to-cart-", "remove-")),
+            "Remove"
+    ));
+}
     }
 
     public void openCart() {
