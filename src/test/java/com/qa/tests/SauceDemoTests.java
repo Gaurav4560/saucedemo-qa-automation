@@ -82,4 +82,19 @@ public void completeCheckoutInformationTest() {
         "Checkout overview page should open"
     );
 }
+        @Test
+    public void removeProductFromCartTest() {
+        LoginPage loginPage = new LoginPage(driver);
+        loginPage.login("standard_user", "secret_sauce");
+
+        InventoryPage inventoryPage = new InventoryPage(driver);
+        inventoryPage.addProductToCart("Sauce Labs Backpack");
+        inventoryPage.openCart();
+
+        CartPage cartPage = new CartPage(driver);
+        cartPage.removeItem("Sauce Labs Backpack");
+
+        Assert.assertEquals(cartPage.getCartItems().size(), 0,
+                "Cart should be empty after removing the product");
+    }
 }
