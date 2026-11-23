@@ -41,19 +41,15 @@ public class InventoryPage {
     String buttonId = "add-to-cart-" +
             product.toLowerCase().replace(" ", "-");
 
+    By addButton = By.id(buttonId);
+    By removeButton = By.id(buttonId.replace("add-to-cart-", "remove-"));
+
     WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 
-    WebElement button = wait.until(
-            ExpectedConditions.elementToBeClickable(By.id(buttonId))
-    );
+    wait.until(ExpectedConditions.elementToBeClickable(addButton)).click();
 
-    button.click();
-     System.out.println("Button after click: " + button.getText());
+    wait.until(ExpectedConditions.visibilityOfElementLocated(removeButton));
 
-    wait.until(ExpectedConditions.textToBe(
-            By.id(buttonId.replace("add-to-cart-", "remove-")),
-            "Remove"
-    ));
 }
     
 
