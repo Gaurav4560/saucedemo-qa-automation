@@ -50,8 +50,6 @@ public class InventoryPage {
 
     wait.until(ExpectedConditions.textToBePresentInElementLocated(cartBadge, "1"));
  }
-
-}
     
 public void openCart() {
     WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
