@@ -7,6 +7,7 @@ import com.qa.pages.InventoryPage;
 import com.qa.pages.LoginPage;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import org.openqa.selenium.By;
 
 public class SauceDemoTests extends BaseTest {
 
