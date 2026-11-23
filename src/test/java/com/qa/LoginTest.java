@@ -1,11 +1,21 @@
 package com.qa.tests;
 
+import com.qa.base.BaseTest;
+import com.qa.pages.LoginPage;
+import org.testng.Assert;
 import org.testng.annotations.Test;
 
-public class LoginTest {
+public class LoginTest extends BaseTest {
 
     @Test
     public void testLogin() {
-        System.out.println("Login test started");
+        LoginPage loginPage = new LoginPage(driver);
+
+        loginPage.login("standard_user", "secret_sauce");
+
+        Assert.assertTrue(
+            driver.getCurrentUrl().contains("inventory"),
+            "Login failed"
+        );
     }
 }
