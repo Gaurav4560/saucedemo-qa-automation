@@ -8,6 +8,8 @@ import com.qa.pages.LoginPage;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import org.openqa.selenium.By;
+import java.util.List;
+import org.openqa.selenium.WebElement;
 
 public class SauceDemoTests extends BaseTest {
 
