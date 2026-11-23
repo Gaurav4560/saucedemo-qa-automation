@@ -39,7 +39,8 @@ public class InventoryPage {
         String buttonId = "add-to-cart-" +
                 product.toLowerCase().replace(" ", "-");
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-wait.until(ExpectedConditions.elementToBeClickable(By.id(buttonId))).click();
+WebElement button = wait.until(ExpectedConditions.elementToBeClickable(By.id(buttonId)));
+button.click();
     }
 
     public void openCart() {
