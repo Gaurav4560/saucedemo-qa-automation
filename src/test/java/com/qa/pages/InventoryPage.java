@@ -9,6 +9,7 @@ import java.util.List;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import java.time.Duration;
+import org.openqa.selenium.support.ui.Select;
 
 public class InventoryPage {
 
