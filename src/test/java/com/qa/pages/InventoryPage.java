@@ -54,7 +54,6 @@ public class InventoryPage {
             "Remove"
     ));
 }
-}
     
 
     public void openCart() {
