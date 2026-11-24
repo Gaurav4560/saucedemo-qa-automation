@@ -37,7 +37,7 @@ public class InventoryPage {
     dropdown.selectByValue(option);
     }
 
- public void addProductToCart(String product) {
+public void addProductToCart(String product) {
     String buttonId = "add-to-cart-" +
             product.toLowerCase().replace(" ", "-");
 
@@ -46,10 +46,14 @@ public class InventoryPage {
 
     WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 
-    wait.until(ExpectedConditions.elementToBeClickable(addButton)).click();
+    WebElement button = wait.until(ExpectedConditions.elementToBeClickable(addButton));
+
+    System.out.println("Button found: " + button.getText());
+
+    button.click();
 
     wait.until(ExpectedConditions.textToBePresentInElementLocated(cartBadge, "1"));
- }
+}
     
 public void openCart() {
     WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
