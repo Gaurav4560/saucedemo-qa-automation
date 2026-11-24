@@ -147,4 +147,24 @@ public void completeCheckoutInformationTest() {
             "Order confirmation page should be displayed"
         );
     }
+        @Test
+    public void checkoutValidationTest() {
+        LoginPage loginPage = new LoginPage(driver);
+        loginPage.login("standard_user", "secret_sauce");
+
+        InventoryPage inventoryPage = new InventoryPage(driver);
+        inventoryPage.addProductToCart("Sauce Labs Backpack");
+        inventoryPage.openCart();
+
+        CartPage cartPage = new CartPage(driver);
+        cartPage.clickCheckout();
+
+        driver.findElement(By.id("continue")).click();
+
+        Assert.assertTrue(
+            driver.findElement(By.className("error-message-container"))
+                .isDisplayed(),
+            "Error should appear when checkout information is empty"
+        );
+    }
 }
