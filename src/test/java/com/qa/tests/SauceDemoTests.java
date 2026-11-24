@@ -122,4 +122,29 @@ public void completeCheckoutInformationTest() {
                 "Products should be sorted from low to high price"
         );
     }
+
+    @Test
+    public void completeCheckoutTest() {
+        LoginPage loginPage = new LoginPage(driver);
+        loginPage.login("standard_user", "secret_sauce");
+
+        InventoryPage inventoryPage = new InventoryPage(driver);
+        inventoryPage.addProductToCart("Sauce Labs Backpack");
+        inventoryPage.openCart();
+
+        CartPage cartPage = new CartPage(driver);
+        cartPage.clickCheckout();
+
+        driver.findElement(By.id("first-name")).sendKeys("Gaurav");
+        driver.findElement(By.id("last-name")).sendKeys("Srivastava");
+        driver.findElement(By.id("postal-code")).sendKeys("201301");
+
+        driver.findElement(By.id("continue")).click();
+        driver.findElement(By.id("finish")).click();
+
+        Assert.assertTrue(
+            driver.getCurrentUrl().contains("checkout-complete"),
+            "Order confirmation page should be displayed"
+        );
+    }
 }
