@@ -53,8 +53,9 @@ public class InventoryPage {
     
 public void openCart() {
     WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-    wait.until(ExpectedConditions.elementToBeClickable(cartIcon)).click();
-
+   WebElement button = wait.until(ExpectedConditions.elementToBeClickable(addButton));
+System.out.println("Button found: " + button.getText());
+button.click();
     
     }
 
