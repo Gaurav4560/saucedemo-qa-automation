@@ -45,8 +45,13 @@ public class SauceDemoTests extends BaseTest {
         inventoryPage.openCart();
 
         CartPage cartPage = new CartPage(driver);
-        Assert.assertEquals(cartPage.getCartItems().size(), 1,
-                "One product should be present in the cart");
+     WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+
+wait.until(ExpectedConditions.numberOfElementsToBe(
+        By.className("cart_item"), 1));
+
+Assert.assertEquals(cartPage.getCartItems().size(), 1,
+        "One product should be present in the cart");
     }
 
     @Test
